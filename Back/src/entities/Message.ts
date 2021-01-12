@@ -21,7 +21,7 @@ class Message extends BaseEntity {
   content: String;
 
   // 본인과 대상의 관계가 N : 1 임을 표현할 때 사용되는 어노테이션
-  @ManyToOne(type => Channel, Channel => Channel.message)
+  @ManyToOne(type => Channel, channel => channel.message)
   innerChannel: Channel;
 
   @Column({ type: "text", nullable: false })
