@@ -1,5 +1,6 @@
 import { GraphQLServer } from "graphql-yoga";
 // graphql-yoga 패키지를 GraphQLServer라는 이름으로 가져온다.
+import connection from "./ormConfig";
 
 const typeDefs = `
     type Query {
@@ -21,4 +22,6 @@ const resolvers = {
 
 const server = new GraphQLServer({ typeDefs, resolvers });
 
-server.start(() => console.log("GraphQL Server running on localhost:4000"));
+connection.then(() =>
+  server.start(() => console.log("GraphQL Server running on localhost:4000"))
+);
