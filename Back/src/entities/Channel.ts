@@ -3,9 +3,9 @@ import {
   BaseEntity,
   PrimaryGeneratedColumn,
   Column,
-  OneToMany,
   CreateDateColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
+  OneToMany
 } from "typeorm";
 import Message from "./Message";
 
@@ -17,7 +17,7 @@ class Channel extends BaseEntity {
   channelName: string;
 
   @OneToMany(type => Message, message => message.innerChannel)
-  message: Message[];
+  messages: Message[];
 
   @CreateDateColumn() createdAt: string;
 

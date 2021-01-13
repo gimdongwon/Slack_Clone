@@ -24,7 +24,7 @@ const resolvers: Resolvers = {
         return {
           ok: true, // 성공
           error: null, // 성공했으므로 error는 null
-          messages: messages // 위 쿼리메소드를 통해 조회해온 데이터를 담음
+          messages // 위 쿼리메소드를 통해 조회해온 데이터를 담음
         };
       } catch (error) {
         return {

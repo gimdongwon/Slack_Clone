@@ -3,28 +3,29 @@ import {
   BaseEntity,
   PrimaryGeneratedColumn,
   Column,
-  ManyToOne,
   CreateDateColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
+  ManyToOne
 } from "typeorm";
 import Channel from "./Channel";
 
 @Entity()
 class Message extends BaseEntity {
-  @PrimaryGeneratedColumn() // mariaDB의 auto_increment와 유사한 역할, Primary Key로 사용.
-  id: number;
+  @PrimaryGeneratedColumn() id: number;
 
-  @Column({ type: "text", nullable: false }) // column을 가리키며 해당 column의 스키마 타입과 null값 허용 여부 명시
+  @Column({ type: "text", nullable: false })
   nickname: string;
 
   @Column({ type: "text", nullable: false })
-  content: String;
-
-  // 본인과 대상의 관계가 N : 1 임을 표현할 때 사용되는 어노테이션
-  @ManyToOne(type => Channel, channel => channel.message)
-  innerChannel: Channel;
+  thumbnail: string;
 
   @Column({ type: "text", nullable: false })
+  contents: string;
+
+  @ManyToOne(type => Channel, channel => channel.messages)
+  innerChannel: Channel;
+
+  @Column({ type: "number", nullable: false })
   innerChannelId: number;
 
   @CreateDateColumn() createdAt: string;
