@@ -5,7 +5,13 @@ type CreateChannelResponse {
 
 type Mutation {
   CreateChannel(channelName: String!): CreateChannelResponse!
+  DeleteChannel(id: Int!): DeleteChannelResponse!
   ModifyChannel(id: Int!, nextName: String!): ModifyChannelResponse!
+}
+
+type DeleteChannelResponse {
+  ok: Boolean!
+  error: String
 }
 
 type GetChannelsResponse {

@@ -1,0 +1,8 @@
+type DeleteChannelResponse {
+  ok: Boolean!
+  error: String
+}
+
+type Mutation {
+  DeleteChannel(id: Int!): DeleteChannelResponse!
+}

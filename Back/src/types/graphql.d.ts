@@ -1,4 +1,4 @@
-export const typeDefs = ["type CreateChannelResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Mutation {\n  CreateChannel(channelName: String!): CreateChannelResponse!\n  ModifyChannel(id: Int!, nextName: String!): ModifyChannelResponse!\n}\n\ntype GetChannelsResponse {\n  ok: Boolean!\n  error: String\n  Channels: [Channel]\n}\n\ntype Query {\n  GetChannels: GetChannelsResponse!\n  GetMessages(innerChannelId: Int!): GetMessagesResponse!\n}\n\ntype ModifyChannelResponse {\n  ok: Boolean!\n  error: String\n  changedName: String\n}\n\ntype Channel {\n  id: Int!\n  channelName: String!\n  messages: [Message]\n  createdAt: String!\n  updatedAt: String\n}\n\ntype GetMessagesResponse {\n  ok: Boolean!\n  error: String\n  messages: [Message]\n}\n\ntype Message {\n  id: Int!\n  nickname: String!\n  contents: String!\n  innerChannel: Channel!\n  innerChannelId: Int!\n  createdAt: String!\n  updatedAt: String\n}\n"];
+export const typeDefs = ["type CreateChannelResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype Mutation {\n  CreateChannel(channelName: String!): CreateChannelResponse!\n  DeleteChannel(id: Int!): DeleteChannelResponse!\n  ModifyChannel(id: Int!, nextName: String!): ModifyChannelResponse!\n}\n\ntype DeleteChannelResponse {\n  ok: Boolean!\n  error: String\n}\n\ntype GetChannelsResponse {\n  ok: Boolean!\n  error: String\n  Channels: [Channel]\n}\n\ntype Query {\n  GetChannels: GetChannelsResponse!\n  GetMessages(innerChannelId: Int!): GetMessagesResponse!\n}\n\ntype ModifyChannelResponse {\n  ok: Boolean!\n  error: String\n  changedName: String\n}\n\ntype Channel {\n  id: Int!\n  channelName: String!\n  messages: [Message]\n  createdAt: String!\n  updatedAt: String\n}\n\ntype GetMessagesResponse {\n  ok: Boolean!\n  error: String\n  messages: [Message]\n}\n\ntype Message {\n  id: Int!\n  nickname: String!\n  contents: String!\n  innerChannel: Channel!\n  innerChannelId: Int!\n  createdAt: String!\n  updatedAt: String\n}\n"];
 /* tslint:disable */
 
 export interface Query {
@@ -42,11 +42,16 @@ export interface GetMessagesResponse {
 
 export interface Mutation {
   CreateChannel: CreateChannelResponse;
+  DeleteChannel: DeleteChannelResponse;
   ModifyChannel: ModifyChannelResponse;
 }
 
 export interface CreateChannelMutationArgs {
   channelName: string;
+}
+
+export interface DeleteChannelMutationArgs {
+  id: number;
 }
 
 export interface ModifyChannelMutationArgs {
@@ -55,6 +60,11 @@ export interface ModifyChannelMutationArgs {
 }
 
 export interface CreateChannelResponse {
+  ok: boolean;
+  error: string | null;
+}
+
+export interface DeleteChannelResponse {
   ok: boolean;
   error: string | null;
 }
