@@ -12,7 +12,7 @@ const resolvers: Resolvers = {
     CreateChannel: async (
       _,
       args: CreateChannelMutationArgs,
-      pubSub
+      { pubSub }
     ): Promise<CreateChannelResponse> => {
       // GetMessages 라는 동작에 대한 비즈니스 로직 (Spring의 Controller와 유사)
       // 사용자가 API를 호출했을때 인자값이 args 안으로 들어온다.
