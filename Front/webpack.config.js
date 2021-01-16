@@ -35,6 +35,16 @@ module.exports = webpackEnv => {
               }
             }
           ]
+        },
+        {
+          // import시 file명 tsx도 가져오도록 만듬.
+          loader: "file-loader",
+          exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+          options: {
+            outputPath: "static/media",
+            name: "[name].[hash:8].[ext]",
+            esModule: false
+          }
         }
       ]
     },

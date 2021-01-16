@@ -17,7 +17,7 @@
     /* Advanced Options */
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": true, // import React from 'react' 사용가능 하게 해줌
   },
   "include": ["./src/**/*"]
 }
