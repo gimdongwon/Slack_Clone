@@ -29,7 +29,8 @@ const resolvers: Resolvers = {
         if (existChannel) {
           return {
             ok: false,
-            error: "이미 존재하는 채널입니다."
+            error: "이미 존재하는 채널입니다.",
+            result: "다른 이름의 채널을 생성해주세요"
           };
         }
         // 채널이름이 중복될 경우 채널을 새로이 만들지 않기위함
@@ -41,13 +42,15 @@ const resolvers: Resolvers = {
 
         return {
           ok: true,
-          error: null
+          error: null,
+          result: `${channelName} 채널이 생성되었습니다.`
         };
         // 성공했을 때의 응답 / 'CreateChannelResponse'를 'gql-merge'를 활용해서 변환하여 얻어낸 타입.
       } catch (error) {
         return {
           ok: false,
-          error: error.message
+          error: error.message,
+          result: "채널 생성에 실패하였습니다."
         };
         // 실패했을 때의 응답 / 'CreateChannelResponse'를 'gql-merge'를 활용해서 변환하여 얻어낸 타입.
       }

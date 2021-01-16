@@ -1,12 +1,14 @@
 type CreateChannelResponse {
   ok: Boolean!
   error: String
+  result: String
 }
 
 type Mutation {
   CreateChannel(channelName: String!): CreateChannelResponse!
   DeleteChannel(id: Int!): DeleteChannelResponse!
   ModifyChannel(id: Int!, nextName: String!): ModifyChannelResponse!
+  SendMessage(nickname: String!, contents: String!, thumbnail: String!, innerChannelId: Int!): SendMessageResponse!
 }
 
 type DeleteChannelResponse {
@@ -45,10 +47,17 @@ type GetMessagesResponse {
   messages: [Message]
 }
 
+type SendMessageResponse {
+  ok: Boolean!
+  error: String!
+  result: String!
+}
+
 type Message {
   id: Int!
   nickname: String!
   contents: String!
+  thumbnail: String!
   innerChannel: Channel!
   innerChannelId: Int!
   createdAt: String!

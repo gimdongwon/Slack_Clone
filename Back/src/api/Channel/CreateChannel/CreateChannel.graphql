@@ -1,6 +1,7 @@
 type CreateChannelResponse {
   ok: Boolean!
   error: String
+  result: String
 }
 
 type Mutation {
