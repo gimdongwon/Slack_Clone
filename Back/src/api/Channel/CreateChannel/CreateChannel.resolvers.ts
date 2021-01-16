@@ -11,7 +11,8 @@ const resolvers: Resolvers = {
     // args는 channel name.
     CreateChannel: async (
       _,
-      args: CreateChannelMutationArgs
+      args: CreateChannelMutationArgs,
+      pubSub
     ): Promise<CreateChannelResponse> => {
       // GetMessages 라는 동작에 대한 비즈니스 로직 (Spring의 Controller와 유사)
       // 사용자가 API를 호출했을때 인자값이 args 안으로 들어온다.
@@ -35,7 +36,10 @@ const resolvers: Resolvers = {
         }
         // 채널이름이 중복될 경우 채널을 새로이 만들지 않기위함
 
-        await Channel.create({ channelName }).save();
+        const newChannel = await Channel.create({ channelName }).save();
+        pubSub.publish("newChannel", {
+          CreateChannelSubscription: newChannel
+        });
         // 채널은 새롭게 만드는 부분.
         // Create()는 INSERT Query와 유사하며 새로운 튜플을 생성할 수 있다.
         // 뒤의 save() 함수를 호출하여야 실제 데이터베이스에 생겨남 COMMIT 개념같음.

@@ -19,9 +19,11 @@ class Channel extends BaseEntity {
   @OneToMany(type => Message, message => message.innerChannel)
   messages: Message[];
 
-  @CreateDateColumn() createdAt: string;
+  @CreateDateColumn({ type: "timestamp" })
+  createdAt: string;
 
-  @UpdateDateColumn() updatedAt: string;
+  @UpdateDateColumn({ type: "timestamp" })
+  updatedAt: string;
 }
 
 export default Channel;

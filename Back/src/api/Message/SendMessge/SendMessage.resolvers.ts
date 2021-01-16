@@ -10,7 +10,8 @@ const resolvers: Resolvers = {
   Mutation: {
     SendMessage: async (
       _,
-      args: SendMessageMutationArgs
+      args: SendMessageMutationArgs,
+      { pubSub }
     ): Promise<SendMessageResponse> => {
       try {
         const { nickname, contents, innerChannelId, thumbnail } = args;
@@ -24,12 +25,16 @@ const resolvers: Resolvers = {
             result: "채널이 존재하지 않습니다."
           };
         }
-        await Message.create({
+        const newMessage = await Message.create({
           nickname,
           contents,
           innerChannelId,
           thumbnail
         }).save();
+
+        pubSub.publish("newMessage", {
+          CreateMessageSubscription: newMessage
+        });
 
         return {
           ok: true,
