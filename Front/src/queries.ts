@@ -4,7 +4,7 @@ export const GET_CHANNELS_QUERY = gql`
   query {
     GetChannels {
       ok
-      channels {
+      Channels {
         id
         channelName
       }

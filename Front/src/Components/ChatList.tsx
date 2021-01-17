@@ -19,7 +19,7 @@ const ChatList: React.FC = () => {
         </MessageFrame>
       </ChatListFrame>
       <ChatFrame>
-        <ChatInput type="text" />
+        <ChatInput placeholder="input you mesaage" type="text" />
       </ChatFrame>
     </MainFrame>
   );

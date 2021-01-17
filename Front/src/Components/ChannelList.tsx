@@ -8,7 +8,7 @@ const ChannelList = () => {
   const [channelName, setChannelName] = useState("");
   const { data, loading } = useQuery(GET_CHANNELS_QUERY);
   const [createChannel] = useMutation(CREATE_CHANNEL_MUTATION);
-
+  console.log("@@@@@@@@", data, loading);
   const createChannelFnc = () => {
     createChannel({
       variables: {
@@ -22,15 +22,16 @@ const ChannelList = () => {
       <Title>Slack with GraphQL</Title>
       <SubTitle>참여 가능 채널 목록</SubTitle>
       {!loading &&
+        data &&
         data.GetChannels &&
         data.GetChannels.ok &&
-        data.GetChannels.channels.length > 0 &&
-        data.GetChannels.channels.map((val: any, idx: number) =>
+        data.GetChannels.Channels.length > 0 &&
+        data.GetChannels.Channels.map((val: any, idx: number) =>
           <Channel key={idx}>
             # {val.channelName}
           </Channel>
         )}
-      <Channel># frontend</Channel>
+      {/* <Channel># frontend</Channel> */}
 
       <CreateChannelFrame>
         <CreateChannelInput
