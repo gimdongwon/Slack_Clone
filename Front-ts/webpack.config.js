@@ -34,7 +34,8 @@ module.exports = webpackEnv => {
                 transpileOnly: isEnvDevelopment ? true : false
               }
             }
-          ]
+          ],
+          include: __dirname
         },
         {
           // import시 file명 tsx도 가져오도록 만듬.
