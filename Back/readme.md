@@ -25,3 +25,4 @@ slack 백엔드 입니다.
 
 - node script의 특성 중에 하나는 앞의 'pre~'가 붙은 스크립트들은 같은 이름을 가진 스크립트보다 먼저 실행시킬 수 있다. ex) dev보다 predev먼저, types보다 pretypes먼저 실행된다.
 - pretypes가 graphql를 위한 타입들이 shema.graphql 파일에 합쳐지고 types를 통해 schema.graphql에 정의된 타입들을 typescript를 위한 타입들로 변화한다. 그리고 graphql.d.ts피일에 저장된다.
+- pubsub으로 메시지 구현
