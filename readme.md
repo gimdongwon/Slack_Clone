@@ -1,8 +1,8 @@
 # Slack Clone 코딩
 
-Server : NodeJS + postgreSQL
-Client : React + TypeScript, GraphQL, Context API
-etc : pubsub, styled-component, Graphql-yoga
+- Server : NodeJS + postgreSQL
+- Client : React + TypeScript, GraphQL, Context API
+- etc : pubsub, styled-component, Graphql-yoga
 
 Slack Clone 코딩으로 GraphQL을 공부하기 위해 개발하였으며 Server는 Node, Client는 React+Graphql을 통해 개발하였습니다. Client는 CRA를 통해 개발하였어서 Webpack공부와 TS공부를 위해 Cra없이 TS를 통해 개발중에 있습니다.
 
